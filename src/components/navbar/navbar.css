@@ -1,0 +1,52 @@
+.nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    height: 80px;
+    background-color: #fff;
+    border-bottom: 1px solid #776f6f;
+}
+
+.navcontent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    max-width: 975px;
+    width: 100%;
+    padding: 26px 20px;
+    height: 54px;
+    
+}
+
+.navbuttons{
+    display: flex;
+    flex: 1 0 0%;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.navicon{
+    margin-left: 25px;
+    width: 25px;
+    height: auto;
+}
+
+.logo{
+    display: flex;
+    flex: 1 99999 0%;
+    justify-content: flex-start;
+}
+
+.search{
+    display: flex;
+    border: solid 1px #dbdbdb;
+    border-radius: 3px;
+    color: #262626;
+    height: 25px;
+    font-size: 16px;
+    text-align: center;
+}
