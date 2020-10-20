@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import './App.css';
 import NavBar from '../components/navbar/NavBar';
+import UserProfile from '../components/userprofile/UserProfile';
 
 const mapStateToProps = () => {};
 
@@ -11,8 +12,8 @@ function App() {
 	return (
 		<div className='App'>
 			<NavBar />
-			{/* <UserProfile/>
-			<Feed/>
+			<UserProfile />
+			{/* <Feed/>
 			<UserPost/> */}
 		</div>
 	);

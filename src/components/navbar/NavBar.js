@@ -13,15 +13,27 @@ function NavBar() {
 			<div className='nav'>
 				<div className='navcontent'>
 					<div className='logo'>
-						<img className='logoimg' alt='nav' src={logo} width='150px' height='auto'></img>
+						<a href='/'>
+							<img className='logoimg' alt='nav' src={logo} width='150px' height='auto'></img>
+						</a>
 					</div>
 					<input className='search' type='text' placeholder='Search'></input>
 					<div className='navbuttons'>
-						<img alt='nav' src={home} width='25px' height='auto'></img>
-						<img className='navicon' alt='nav' src={download}></img>
-						<img className='navicon' alt='nav' src={navigation}></img>
-						<img className='navicon' alt='nav' src={heart}></img>
-						<img className='navicon' alt='nav' src={user}></img>
+						<a href='/'>
+							<img alt='nav' src={home} width='25px' height='auto'></img>
+						</a>
+						<a href='/'>
+							<img className='navicon' alt='nav' src={download}></img>
+						</a>
+						<a href='/'>
+							<img className='navicon' alt='nav' src={navigation}></img>
+						</a>
+						<a href='/'>
+							<img className='navicon' alt='nav' src={heart}></img>
+						</a>
+						<a href='/'>
+							<img className='navicon' alt='nav' src={user}></img>
+						</a>
 					</div>
 				</div>
 			</div>
