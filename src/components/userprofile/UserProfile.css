@@ -1,18 +1,109 @@
-.page{
+.profile{
     display: flex;
-    margin: 0 auto 30px;
-    position: relative;
-    margin-top: 55px;
+    align-items: center;
+    justify-content: center;
+    width: 100%
+}
+
+.head{
+    display: flex;
+    width:100%;
+    height: 220px;
+    border-bottom: 1px solid gray;
+    margin-bottom: 15px;
+}
+
+.page{
+    display: flex ;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    margin: 55px 100px;
     height: 1000px;
-    margin-left: 144px;
-    padding: 40px;
+    width: 100%;
+    padding: 40px 200px 40px 200px;
 }
 
 .userpic{
     border: solid 5px;
     border-radius: 100px;
-    background: url(./kitty.jpg) no-repeat center ;
+    background: url(https://lh3.googleusercontent.com/proxy/5Px19ev2aNFQ3fctlMMKTDUtCyW9wXdL9U6usAOYM9soPpM9aQbMBrJpgEDiniinSQIYSGvtSWNR3rcBewGPGYZmxel1mrDFCQfvO6DqFbMk0XJvjSbGRytfaimOg0qtOK54WTTRT-VtDA) no-repeat center ;
     background-size: cover;
     width: 200px;
     height: 200px;
+}
+
+.userinfo{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    height: 60px;
+    width: 500px;
+    margin-bottom: 15px;
+}
+
+.picbox{
+    width: 300px;
+    height: 210px;
+    margin-right: 20px;
+}
+
+h2{
+    font-size: 30px;
+    text-align: center;
+    justify-content: center;
+    height: 30px;
+    margin: 0;
+}
+
+.btncontainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 20px;
+    height: 50px;
+}
+
+.editbtn{
+    height: 30px;
+    width: 100px;
+    border: 1px solid ;
+    border-radius: 6px;
+    background-color: rgb(255, 255, 255);
+}
+
+.marginleft{
+    margin-left: 10px;
+}
+
+.section{
+    display: flex;
+    width: 100%;
+    margin-bottom: 25px;
+}
+#pt{
+    font-size: 18px;
+    margin-bottom:  4px;
+    margin-top: 0;
+}
+.posts{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    width: 100%;
+}
+
+.postbox{
+    width: 290px;
+    height: 290px;
+    position: relative;
+    overflow: hidden;
+    margin: 5px;
+    justify-self: center;
+}
+
+.post{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
