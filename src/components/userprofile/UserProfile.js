@@ -1,6 +1,7 @@
 import React from 'react';
 import './UserProfile.css';
 import Posts from './Posts';
+import kitty from './kitty.jpg';
 
 const links = [
 	'https://www.cbc.ca/kidscbc2/content/the_feed/kitty_sweets.jpg',
@@ -20,7 +21,9 @@ function UserProfile() {
 			<div className='page'>
 				<header className='head'>
 					<div className='picbox'>
-						<div className='userpic'></div>
+						<div className='userpic'>
+							<img className='pic' alt='user' src={kitty}></img>
+						</div>
 					</div>
 					<section>
 						<div className='userinfo'>
