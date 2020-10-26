@@ -7,11 +7,12 @@ import thunkMiddleware from 'redux-thunk';
 import './index.css';
 import App from './containers/App';
 import * as serviceWorker from './serviceWorker';
+import { setViewportSize } from './reducers/reducers';
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const logger = createLogger();
 
-const rootReducer = combineReducers({});
+const rootReducer = combineReducers({ setViewportSize });
 
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunkMiddleware, logger)));
 

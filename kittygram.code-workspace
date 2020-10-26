@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "..\\kittygramapi"
+		},
+		{
+			"path": "..\\Testuploadtapi"
+		},
+		{
+			"path": "..\\robotfriends"
+		},
+		{
+			"path": "..\\smart-brain"
+		},
+		{
+			"path": "..\\smart-brain-api"
+		}
+	],
+	"settings": {}
+}

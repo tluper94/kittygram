@@ -1,20 +1,50 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
 import NavBar from '../components/navbar/NavBar';
+import UserProfile from '../components/userprofile/UserProfile';
+import Signin from '../components/signin/Signin';
 
-const mapStateToProps = () => {};
+import { CheckViewport } from '../actions/actions';
 
-const mapDispatchToProps = () => {};
+const mapStateToProps = (state) => {
+	return {
+		isDesktop: state.setViewportSize.isDesktop
+	};
+};
 
-function App() {
+const mapDispatchToProps = (dispatch) => {
+	return {
+		checkIsDesktop: () => dispatch(CheckViewport(window.innerWidth > 640))
+	};
+};
+
+function App({ checkIsDesktop }) {
+	useEffect(() => {
+		checkIsDesktop();
+		window.addEventListener('resize', checkIsDesktop);
+	});
+
 	return (
-		<div className='App'>
-			<NavBar />
-			{/* <UserProfile/>
-			<Feed/>
+		<Router>
+			<div className='App'>
+				<NavBar />
+				{/* <Feed/>
 			<UserPost/> */}
-		</div>
+				<Switch>
+					<Route path='/profile'>
+						<UserProfile />
+					</Route>
+					<Route path='/signin'>
+						<Signin />
+					</Route>
+					<Route path='/'>
+						<UserProfile />
+					</Route>
+				</Switch>
+			</div>
+		</Router>
 	);
 }
 

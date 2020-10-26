@@ -1,3 +1,4 @@
+
 .nav{
     display: flex;
     justify-content: center;
@@ -5,13 +6,15 @@
     position: fixed;
     width: 100%;
     top: 0;
-    height: 80px;
+    height: 55px;
     background-color: #fff;
     border-bottom: 1px solid #776f6f;
+    z-index: 2;
 }
 
 .navcontent{
     display: flex;
+    flex: auto;
     justify-content: center;
     align-items: center;
     flex-direction: row;
@@ -25,6 +28,7 @@
 .navbuttons{
     display: flex;
     flex: 1 0 0%;
+    margin-left: 10px;
     align-items: center;
     justify-content: flex-end;
 }
@@ -33,6 +37,10 @@
     margin-left: 25px;
     width: 25px;
     height: auto;
+}
+
+.logoimg{
+    padding-top: 13px;
 }
 
 .logo{
