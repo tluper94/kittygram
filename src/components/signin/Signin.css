@@ -1,0 +1,79 @@
+.signin{
+    display: flex;
+    position: absolute;
+    min-height: 100%;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+    width: 100%;
+    background-color: #fafafa;
+}
+.container{
+    display: flex;
+    min-width: 935px;
+    width: 100%;
+    margin: 30px auto 0;
+    justify-content: center;
+}
+
+.form-container{
+    display: flex;
+    flex-grow: 1;
+    max-width: 335px;
+    height: 200px;
+    background-color: #fff;
+    box-shadow: 3px 3px 5px 6px #ccc;
+}
+
+.signin-form{
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    margin-top: 24px;
+    justify-content: flex-start;
+}
+
+.input-container{
+    display: flex;
+    justify-content: center;
+    margin: 0 30px 10px 30px
+}
+
+.input-field{
+    display: flex;
+    align-items: center;
+    width: 268px;
+    height: 38px;
+    border: solid 1px rgb(219, 219, 219);
+}
+
+.signin-input{
+    border: none;
+    height: 28px;
+    width: 260px;
+    font-size: 15px;
+    font-family: ink free;
+    font-weight: 600;
+}
+
+.signin-input:focus{
+    outline: none;
+}
+
+.btn-container{
+    display: flex;
+    justify-content: center;
+    margin: 10px 30px 20px 30px;
+}
+
+.login-btn{
+    font-family: ink free;
+    width: 230px;
+    height: 38px;
+    font-size: 18px;
+    font-weight: 800;
+    background-color: rgb(25, 151, 235);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}

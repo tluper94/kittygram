@@ -6,38 +6,73 @@ import home from './home.svg';
 import navigation from './navigation.svg';
 import user from './user.svg';
 import heart from './heart.svg';
+import { useSelector } from 'react-redux';
 
 function NavBar() {
-	return (
-		<nav className='navbar'>
-			<div className='nav'>
-				<div className='navcontent'>
-					<div className='logo'>
-						<a href='/'>
-							<img className='logoimg' alt='nav' src={logo} width='150px' height='auto'></img>
-						</a>
-					</div>
-					<input className='search' type='text' placeholder='Search'></input>
-					<div className='navbuttons'>
-						<a href='/'>
-							<img alt='nav' src={home} width='25px' height='auto'></img>
-						</a>
-						<a href='/'>
-							<img className='navicon' alt='nav' src={download}></img>
-						</a>
-						<a href='/'>
-							<img className='navicon' alt='nav' src={navigation}></img>
-						</a>
-						<a href='/'>
-							<img className='navicon' alt='nav' src={heart}></img>
-						</a>
-						<a href='/'>
-							<img className='navicon' alt='nav' src={user}></img>
-						</a>
+	const isDestktop = useSelector((state) => state.setViewportSize.isDesktop);
+	if (isDestktop) {
+		return (
+			<nav className='navbar'>
+				<div className='nav'>
+					<div className='navcontent'>
+						<div className='logo'>
+							<a href='/'>
+								<img className='logoimg' alt='nav' src={logo} width='150px' height='auto'></img>
+							</a>
+						</div>
+						<input className='search' type='text' placeholder='Search'></input>
+						<div className='navbuttons'>
+							<a href='/'>
+								<img alt='nav' src={home} width='25px' height='auto'></img>
+							</a>
+							<a href='/'>
+								<img className='navicon' alt='nav' src={download}></img>
+							</a>
+							<a href='/'>
+								<img className='navicon' alt='nav' src={navigation}></img>
+							</a>
+							<a href='/'>
+								<img className='navicon' alt='nav' src={heart}></img>
+							</a>
+							<a href='/'>
+								<img className='navicon' alt='nav' src={user}></img>
+							</a>
+						</div>
 					</div>
 				</div>
-			</div>
-		</nav>
-	);
+			</nav>
+		);
+	} else {
+		return (
+			<nav className='navbar'>
+				<div className='nav'>
+					<div className='navcontent'>
+						<div className='logo'>
+							<a href='/'>
+								<img className='logoimg' alt='nav' src={logo} width='150px' height='auto'></img>
+							</a>
+						</div>
+						<div className='navbuttons'>
+							<a href='/'>
+								<img alt='nav' src={home} width='25px' height='auto'></img>
+							</a>
+							<a href='/'>
+								<img className='navicon' alt='nav' src={download}></img>
+							</a>
+							<a href='/'>
+								<img className='navicon' alt='nav' src={navigation}></img>
+							</a>
+							<a href='/'>
+								<img className='navicon' alt='nav' src={heart}></img>
+							</a>
+							<a href='/'>
+								<img className='navicon' alt='nav' src={user}></img>
+							</a>
+						</div>
+					</div>
+				</div>
+			</nav>
+		);
+	}
 }
 export default NavBar;
