@@ -4,36 +4,40 @@ import Posts from './Posts';
 import kitty from './kitty.jpg';
 
 const links = [
-	'https://www.cbc.ca/kidscbc2/content/the_feed/kitty_sweets.jpg',
-	'https://www.cbc.ca/kidscbc2/content/the_feed/kitty_sleep-compressor.jpg',
-	'https://lh3.googleusercontent.com/proxy/5Px19ev2aNFQ3fctlMMKTDUtCyW9wXdL9U6usAOYM9soPpM9aQbMBrJpgEDiniinSQIYSGvtSWNR3rcBewGPGYZmxel1mrDFCQfvO6DqFbMk0XJvjSbGRytfaimOg0qtOK54WTTRT-VtDA',
-	'https://www.litter-robot.com/blog/wp-content/uploads/2016/08/shutterstock_191770991-scared-cat-900x600.jpg',
-	'https://thumbs.dreamstime.com/b/kittys-hand-kitty-red-rose-34877839.jpg',
-	'https://thumbs.dreamstime.com/b/kittys-hand-kitty-red-rose-34877839.jpg',
-	'https://thumbs.dreamstime.com/b/kittys-hand-kitty-red-rose-34877839.jpg',
-	'https://thumbs.dreamstime.com/b/kittys-hand-kitty-red-rose-34877839.jpg',
-	'https://thumbs.dreamstime.com/b/kittys-hand-kitty-red-rose-34877839.jpg'
+	{ id: 1, post: 'https://www.cbc.ca/kidscbc2/content/the_feed/kitty_sweets.jpg' },
+	{ id: 2, post: 'https://www.cbc.ca/kidscbc2/content/the_feed/kitty_sleep-compressor.jpg' },
+	{
+		id: 3,
+		post:
+			'https://www.litter-robot.com/blog/wp-content/uploads/2016/08/shutterstock_191770991-scared-cat-900x600.jpg'
+	},
+	{ id: 4, post: 'https://thumbs.dreamstime.com/b/kittys-hand-kitty-red-rose-34877839.jpg' },
+	{ id: 5, post: 'https://thumbs.dreamstime.com/b/kittys-hand-kitty-red-rose-34877839.jpg' },
+	{ id: 6, post: 'https://thumbs.dreamstime.com/b/kittys-hand-kitty-red-rose-34877839.jpg' },
+	{ id: 7, post: 'https://thumbs.dreamstime.com/b/kittys-hand-kitty-red-rose-34877839.jpg' },
+	{ id: 8, post: 'https://thumbs.dreamstime.com/b/kittys-hand-kitty-red-rose-34877839.jpg' }
 ];
 
 function UserProfile() {
 	return (
-		<div className='profile'>
-			<div className='page'>
+		<div className='main'>
+			<div className='profile-container'>
 				<header className='head'>
-					<div className='picbox'>
-						<div className='userpic'>
-							<img className='pic' alt='user' src={kitty}></img>
+					<div className='profile-img-container'>
+						<div className='profile-img-frame'>
+							<img className='profile-img' alt='user' src={kitty}></img>
 						</div>
 					</div>
 					<section>
-						<div className='userinfo'>
-							<h2> Clevtrev 94 </h2>
+						<div className='profile-info'>
+							<h2 className='username'> Clevtrev 94 </h2>
 							<div className='btncontainer'>
 								<button className='editbtn'>Edit Profile</button>
 							</div>
 						</div>
 						<div className='section'>
 							<p>10 Post</p>
+							<br />
 							<p className='marginleft'>10 followers</p>
 							<p className='marginleft'>10 following</p>
 						</div>
@@ -43,9 +47,9 @@ function UserProfile() {
 						</div>
 					</section>
 				</header>
-				<div className='posts'>
+				<div className='posts-container'>
 					{links.map((link, i) => {
-						return <Posts src={links[i]}></Posts>;
+						return <Posts key={links[i].id} src={links[i]}></Posts>;
 					})}
 				</div>
 			</div>
