@@ -1,30 +1,11 @@
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
 import UserProfile from '../components/userprofile/UserProfile';
 import Signin from '../components/signin/Signin';
+import Signup from '../components/signup/Signup';
 
-import { CheckViewport } from '../actions/actions';
-
-const mapStateToProps = (state) => {
-	return {
-		isDesktop: state.setViewportSize.isDesktop
-	};
-};
-
-const mapDispatchToProps = (dispatch) => {
-	return {
-		checkIsDesktop: () => dispatch(CheckViewport(window.innerWidth > 640))
-	};
-};
-
-function App({ checkIsDesktop }) {
-	useEffect(() => {
-		checkIsDesktop();
-		window.addEventListener('resize', checkIsDesktop);
-	});
-
+function App() {
 	return (
 		<Router>
 			<div className='App'>
@@ -37,8 +18,11 @@ function App({ checkIsDesktop }) {
 					<Route path='/signin'>
 						<Signin />
 					</Route>
+					<Route path='/signup'>
+						<Signup />
+					</Route>
 					<Route path='/'>
-						<UserProfile />
+						<Signin />
 					</Route>
 				</Switch>
 			</div>
@@ -46,4 +30,4 @@ function App({ checkIsDesktop }) {
 	);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

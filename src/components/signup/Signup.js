@@ -1,19 +1,21 @@
 import React from 'react';
-import './Signin.css';
+import '../signin/Signin.css';
 import Logo from '../navbar/logo.png';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { emailChange, passwordChange } from './loginslice';
+import { emailChange, nameChange, usernameChange, passwordChange } from './signupslice';
 
-function Signin() {
+function Signup() {
 	const dispatch = useDispatch();
 
-	const email = useSelector((state) => state.login.email);
-	const password = useSelector((state) => state.login.password);
+	const email = useSelector((state) => state.signup.email);
+	const name = useSelector((state) => state.signup.name);
+	const username = useSelector((state) => state.signup.username);
+	const password = useSelector((state) => state.signup.password);
 
 	function onSubmit() {
-		if (email && password > '') {
-			console.log('email:', email, 'password:', password);
+		if (email && name && username && password > '') {
+			console.log(email, name, username, password);
 		} else {
 			console.log('error');
 		}
@@ -30,7 +32,41 @@ function Signin() {
 						<div id='signin'>
 							<div className='input-container'>
 								<div className='input-field'>
-									<label htmlFor='username or email'>
+									<label htmlFor='email'>
+										<input
+											className='signin-input'
+											label='email'
+											required={true}
+											autoCapitalize='false'
+											autoCorrect='flase'
+											name='email'
+											type='text'
+											placeholder='Email'
+											onChange={(event) => dispatch(emailChange(event.target.value))}
+										/>
+									</label>
+								</div>
+							</div>
+							<div className='input-container'>
+								<div className='input-field'>
+									<label htmlFor='name'>
+										<input
+											className='signin-input'
+											label='name'
+											required={true}
+											autoCapitalize='false'
+											autoCorrect='flase'
+											name='name'
+											type='text'
+											placeholder='Full name'
+											onChange={(event) => dispatch(nameChange(event.target.value))}
+										/>
+									</label>
+								</div>
+							</div>
+							<div className='input-container'>
+								<div className='input-field'>
+									<label htmlFor='username'>
 										<input
 											className='signin-input'
 											label='username'
@@ -39,8 +75,10 @@ function Signin() {
 											autoCorrect='flase'
 											name='username'
 											type='text'
-											placeholder='Username or email'
-											onChange={(event) => dispatch(emailChange(event.target.value))}
+											placeholder='Username'
+											onChange={(event) =>
+												dispatch(usernameChange(event.target.value))
+											}
 										/>
 									</label>
 								</div>
@@ -66,7 +104,7 @@ function Signin() {
 							</div>
 							<div className='btn-container'>
 								<button className='login-btn' type='submit' onClick={onSubmit}>
-									Login
+									Signup
 								</button>
 							</div>
 						</div>
@@ -74,9 +112,9 @@ function Signin() {
 					<div className='signup-link-container'>
 						<div>
 							<p className='signup-link'>
-								Don't have an account?{' '}
-								<Link to='/signup' className='link'>
-									Sign up
+								Have an account?{' '}
+								<Link to='/signin' className='link'>
+									Sign in
 								</Link>
 							</p>
 						</div>
@@ -86,4 +124,4 @@ function Signin() {
 		</div>
 	);
 }
-export default Signin;
+export default Signup;
