@@ -1,20 +1,30 @@
 import React from 'react';
 import './Signin.css';
 import Logo from '../navbar/logo.png';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { emailChange, passwordChange } from './loginslice';
 
 function Signin() {
 	const dispatch = useDispatch();
+	let history = useHistory();
 
 	const email = useSelector((state) => state.login.email);
 	const password = useSelector((state) => state.login.password);
 
 	function onSubmit() {
+		const error = document.querySelector('#error');
 		if (email && password > '') {
+			if (error.classList.contains('error')) {
+				error.classList.remove('error');
+			}
 			console.log('email:', email, 'password:', password);
+
+			history.push('./profile');
 		} else {
+			if (!error.classList.contains('error')) {
+				error.classList.add('error');
+			}
 			console.log('error');
 		}
 	}
@@ -26,6 +36,9 @@ function Signin() {
 					<div className='signin-form-container'>
 						<div className='signin-logo'>
 							<img className='signin-img' alt='logo' src={Logo} />
+						</div>
+						<div id='error' className='remove'>
+							<p className='error-text'>Please enter the required fields</p>
 						</div>
 						<div id='signin'>
 							<div className='input-container'>

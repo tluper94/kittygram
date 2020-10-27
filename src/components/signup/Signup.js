@@ -1,12 +1,15 @@
 import React from 'react';
 import '../signin/Signin.css';
 import Logo from '../navbar/logo.png';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { emailChange, nameChange, usernameChange, passwordChange } from './signupslice';
+import Userprofile from '../userprofile/UserProfile';
 
 function Signup() {
 	const dispatch = useDispatch();
+
+	let history = useHistory();
 
 	const email = useSelector((state) => state.signup.email);
 	const name = useSelector((state) => state.signup.name);
@@ -14,13 +17,18 @@ function Signup() {
 	const password = useSelector((state) => state.signup.password);
 
 	function onSubmit() {
+		const error = document.querySelector('#error');
 		if (email && name && username && password > '') {
-			console.log(email, name, username, password);
+			if (error.classList.contains('error')) {
+				error.classList.remove('error');
+			}
+			history.push('/profile');
 		} else {
-			console.log('error');
+			if (!error.classList.contains('error')) {
+				error.classList.add('error');
+			}
 		}
 	}
-
 	return (
 		<div className='signin'>
 			<div className='container'>
@@ -28,6 +36,9 @@ function Signup() {
 					<div className='signin-form-container'>
 						<div className='signin-logo'>
 							<img className='signin-img' alt='logo' src={Logo} />
+						</div>
+						<div id='error' className='remove'>
+							<p className='error-text'>Please enter the required fields</p>
 						</div>
 						<div id='signin'>
 							<div className='input-container'>

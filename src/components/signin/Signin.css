@@ -12,7 +12,7 @@
 .signin-logo{
     width: 200px;
     height: 50px;
-    margin: 30px 30px 55px 30px;
+    margin: 30px 30px 45px 30px;
 }
 
 .signin-img{
@@ -124,4 +124,17 @@
     color: rgb(0, 127, 231);
     font-weight: 700;
     text-decoration: none;
+}
+
+.remove{
+    display: none;
+}
+
+.error{
+    display: flex;
+}
+
+
+.error-text{
+    color: red;
 }

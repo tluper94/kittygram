@@ -7,8 +7,16 @@ import navigation from './navigation.svg';
 import user from './user.svg';
 import heart from './heart.svg';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { logout } from './navslice';
 
 function NavBar() {
+	const dispatch = useDispatch();
+
+	const onLogout = () => {
+		dispatch(logout());
+	};
+
 	return (
 		<nav className='navbar'>
 			<div className='nav'>
@@ -32,9 +40,9 @@ function NavBar() {
 						<a href='/'>
 							<img className='navicon margin-left' alt='nav' src={heart}></img>
 						</a>
-						<a href='/'>
+						<Link to='/signin' onClick={onLogout}>
 							<img className='navicon margin-left' alt='nav' src={user}></img>
-						</a>
+						</Link>
 					</div>
 				</div>
 			</div>
