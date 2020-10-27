@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
-import NavBar from '../components/navbar/NavBar';
 import UserProfile from '../components/userprofile/UserProfile';
 import Signin from '../components/signin/Signin';
 
@@ -29,7 +28,6 @@ function App({ checkIsDesktop }) {
 	return (
 		<Router>
 			<div className='App'>
-				<NavBar />
 				{/* <Feed/>
 			<UserPost/> */}
 				<Switch>

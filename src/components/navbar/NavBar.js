@@ -7,6 +7,7 @@ import navigation from './navigation.svg';
 import user from './user.svg';
 import heart from './heart.svg';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 function NavBar() {
 	const isDestktop = useSelector((state) => state.setViewportSize.isDesktop);
@@ -16,9 +17,9 @@ function NavBar() {
 				<div className='nav'>
 					<div className='navcontent'>
 						<div className='logo'>
-							<a href='/'>
+							<Link to='/signin'>
 								<img className='logoimg' alt='nav' src={logo} width='150px' height='auto'></img>
-							</a>
+							</Link>
 						</div>
 						<input className='search' type='text' placeholder='Search'></input>
 						<div className='navbuttons'>
