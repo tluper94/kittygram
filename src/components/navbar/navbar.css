@@ -9,7 +9,7 @@
     height: 55px;
     background-color: #fff;
     border-bottom: 1px solid #776f6f;
-    z-index: 2;
+    z-index: 1;
 }
 
 .navcontent{
@@ -33,14 +33,20 @@
     justify-content: flex-end;
 }
 
-.navicon{
+.margin-left{
     margin-left: 25px;
+}
+
+.navicon{
     width: 25px;
     height: auto;
 }
 
+
 .logoimg{
     padding-top: 13px;
+    width: 150px;
+     height: auto;
 }
 
 .logo{
@@ -57,4 +63,24 @@
     height: 25px;
     font-size: 16px;
     text-align: center;
+}
+
+@media only screen and (max-width: 640px){
+    .navicon{
+        width: 20px;
+        height: auto;
+    }
+    .margin-left{
+        margin-left: 18px;
+    }
+
+    .search{
+        display: none;
+    }
+
+    .logoimg{
+        padding-top: 13px;
+        width: 100px;
+         height: auto;
+    }
 }

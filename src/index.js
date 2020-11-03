@@ -1,25 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { applyMiddleware, createStore, combineReducers, compose } from 'redux';
-import { createLogger } from 'redux-logger';
-import thunkMiddleware from 'redux-thunk';
 import './index.css';
 import App from './containers/App';
 import * as serviceWorker from './serviceWorker';
-import { setViewportSize } from './reducers/reducers';
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
-const logger = createLogger();
-
-const rootReducer = combineReducers({ setViewportSize });
-
-const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunkMiddleware, logger)));
+import { store } from './store';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 ReactDOM.render(
-	<Provider store={store}>
-		<App />
-	</Provider>,
+	<Router>
+		<Provider store={store}>
+			<App />
+		</Provider>
+	</Router>,
 	document.getElementById('root')
 );
 

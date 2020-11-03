@@ -2,6 +2,7 @@ import React from 'react';
 import './UserProfile.css';
 import Posts from './Posts';
 import kitty from './kitty.jpg';
+import NavBar from '../navbar/NavBar';
 
 const links = [
 	{ id: 1, post: 'https://www.cbc.ca/kidscbc2/content/the_feed/kitty_sweets.jpg' },
@@ -20,8 +21,9 @@ const links = [
 
 function UserProfile() {
 	return (
-		<div className='main'>
-			<div className='profile-container'>
+		<main className='main'>
+			<NavBar />
+			<div className='page-container'>
 				<header className='head'>
 					<div className='profile-img-container'>
 						<div className='profile-img-frame'>
@@ -53,7 +55,7 @@ function UserProfile() {
 					})}
 				</div>
 			</div>
-		</div>
+		</main>
 	);
 }
 export default UserProfile;
