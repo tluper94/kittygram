@@ -3,31 +3,52 @@ import './Signin.css';
 import Logo from '../navbar/logo.png';
 import { Link, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { emailChange, passwordChange } from './loginslice';
+import {
+	emailChange,
+	passwordChange,
+	setEmailClass,
+	setPasswordClass,
+	setErrorClass
+} from '../../slices/loginsignupslice';
 
-function Signin() {
+function Signin({ resetState }) {
 	const dispatch = useDispatch();
 	let history = useHistory();
 
-	const email = useSelector((state) => state.login.email);
-	const password = useSelector((state) => state.login.password);
+	const state = useSelector((state) => state);
 
-	function onSubmit() {
-		const error = document.querySelector('#error');
-		if (email && password > '') {
-			if (error.classList.contains('error')) {
-				error.classList.remove('error');
-			}
-			console.log('email:', email, 'password:', password);
+	const email = state.loginSignup.email;
+	const password = state.loginSignup.password;
+	const emailClass = state.loginSignup.emailClass;
+	const passwordClass = state.loginSignup.passwordClass;
+	const errorClass = state.loginSignup.errorClass;
 
-			history.push('./profile');
+	console.log(emailClass, passwordClass, errorClass);
+
+	const validateForm = () => {
+		let validEmail;
+		let validPassword;
+
+		if (email > '') {
+			dispatch(setEmailClass('input-field'));
+			validEmail = true;
 		} else {
-			if (!error.classList.contains('error')) {
-				error.classList.add('error');
-			}
-			console.log('error');
+			dispatch(setEmailClass('input-field invalid-field'));
+			dispatch(setErrorClass('error'));
 		}
-	}
+
+		if (password > '') {
+			dispatch(setPasswordClass('input-field'));
+			validPassword = true;
+		} else {
+			dispatch(setPasswordClass('input-field invalid-field'));
+			dispatch(setErrorClass('error'));
+		}
+
+		if (validEmail && validPassword) {
+			history.push('./profile');
+		}
+	};
 
 	return (
 		<div className='signin'>
@@ -37,12 +58,12 @@ function Signin() {
 						<div className='signin-logo'>
 							<img className='signin-img' alt='logo' src={Logo} />
 						</div>
-						<div id='error' className='remove'>
-							<p className='error-text'>Please enter the required fields</p>
+						<div id='error' className={errorClass}>
+							<p className='error-text'>Invalid email or password</p>
 						</div>
 						<div id='signin'>
 							<div className='input-container'>
-								<div className='input-field'>
+								<div id='email' className={emailClass}>
 									<label htmlFor='username or email'>
 										<input
 											className='signin-input'
@@ -59,11 +80,12 @@ function Signin() {
 								</div>
 							</div>
 							<div className='input-container'>
-								<div className='input-field'>
+								<div id='password' className={passwordClass}>
 									<label htmlFor='password'>
 										<input
+											id='password'
 											className='signin-input'
-											aria-label='username'
+											aria-label='password'
 											aria-required='true'
 											autoCapitalize='false'
 											autoCorrect='flase'
@@ -78,7 +100,7 @@ function Signin() {
 								</div>
 							</div>
 							<div className='btn-container'>
-								<button className='login-btn' type='submit' onClick={onSubmit}>
+								<button className='login-btn' type='submit' onClick={validateForm}>
 									Login
 								</button>
 							</div>
@@ -88,7 +110,7 @@ function Signin() {
 						<div>
 							<p className='signup-link'>
 								Don't have an account?{' '}
-								<Link to='/signup' className='link'>
+								<Link onClick={resetState} to='/signup' className='link'>
 									Sign up
 								</Link>
 							</p>

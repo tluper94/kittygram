@@ -3,30 +3,77 @@ import '../signin/Signin.css';
 import Logo from '../navbar/logo.png';
 import { Link, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { emailChange, nameChange, usernameChange, passwordChange } from './signupslice';
-import Userprofile from '../userprofile/UserProfile';
+import {
+	emailChange,
+	passwordChange,
+	nameChange,
+	usernameChange,
+	setEmailClass,
+	setPasswordClass,
+	setNameClass,
+	setUsernameClass,
+	setErrorClass
+} from '../../slices/loginsignupslice';
 
-function Signup() {
+function Signup({ resetState }) {
 	const dispatch = useDispatch();
 
 	let history = useHistory();
 
-	const email = useSelector((state) => state.signup.email);
-	const name = useSelector((state) => state.signup.name);
-	const username = useSelector((state) => state.signup.username);
-	const password = useSelector((state) => state.signup.password);
+	const state = useSelector((state) => state);
+
+	const email = state.loginSignup.email;
+	const name = state.loginSignup.name;
+	const username = state.loginSignup.username;
+	const password = state.loginSignup.password;
+	const emailClass = state.loginSignup.emailClass;
+	const errorClass = state.loginSignup.errorClass;
+	const nameClass = state.loginSignup.nameClass;
+	const usernameClass = state.loginSignup.usernameClass;
+	const passwordClass = state.loginSignup.passwordClass;
+
+	console.log(emailClass, 'error:', errorClass);
 
 	function onSubmit() {
-		const error = document.querySelector('#error');
-		if (email && name && username && password > '') {
-			if (error.classList.contains('error')) {
-				error.classList.remove('error');
-			}
-			history.push('/profile');
+		let validEmail;
+		let validPassword;
+		let validName;
+		let ValidUserName;
+
+		if (email > '') {
+			dispatch(setEmailClass('input-field'));
+			validEmail = true;
 		} else {
-			if (!error.classList.contains('error')) {
-				error.classList.add('error');
-			}
+			dispatch(setEmailClass('input-field invalid-field'));
+			dispatch(setErrorClass('error'));
+		}
+
+		if (password > '') {
+			dispatch(setPasswordClass('input-field'));
+			validPassword = true;
+		} else {
+			dispatch(setPasswordClass('input-field invalid-field'));
+			dispatch(setErrorClass('error'));
+		}
+
+		if (name > '') {
+			dispatch(setNameClass('input-field'));
+			validName = true;
+		} else {
+			dispatch(setNameClass('input-field invalid-field'));
+			dispatch(setErrorClass('error'));
+		}
+
+		if (username > '') {
+			dispatch(setUsernameClass('input-field'));
+			ValidUserName = true;
+		} else {
+			dispatch(setUsernameClass('input-field invalid-field'));
+			dispatch(setErrorClass('error'));
+		}
+
+		if (validEmail && validPassword && validName && ValidUserName) {
+			history.push('/profile');
 		}
 	}
 	return (
@@ -37,12 +84,12 @@ function Signup() {
 						<div className='signin-logo'>
 							<img className='signin-img' alt='logo' src={Logo} />
 						</div>
-						<div id='error' className='remove'>
+						<div id='error' className={errorClass}>
 							<p className='error-text'>Please enter the required fields</p>
 						</div>
 						<div id='signin'>
 							<div className='input-container'>
-								<div className='input-field'>
+								<div className={emailClass}>
 									<label htmlFor='email'>
 										<input
 											className='signin-input'
@@ -59,7 +106,7 @@ function Signup() {
 								</div>
 							</div>
 							<div className='input-container'>
-								<div className='input-field'>
+								<div className={nameClass}>
 									<label htmlFor='name'>
 										<input
 											className='signin-input'
@@ -76,7 +123,7 @@ function Signup() {
 								</div>
 							</div>
 							<div className='input-container'>
-								<div className='input-field'>
+								<div className={usernameClass}>
 									<label htmlFor='username'>
 										<input
 											className='signin-input'
@@ -95,7 +142,7 @@ function Signup() {
 								</div>
 							</div>
 							<div className='input-container'>
-								<div className='input-field'>
+								<div className={passwordClass}>
 									<label htmlFor='password'>
 										<input
 											className='signin-input'
@@ -124,7 +171,7 @@ function Signup() {
 						<div>
 							<p className='signup-link'>
 								Have an account?{' '}
-								<Link to='/signin' className='link'>
+								<Link onClick={resetState} to='/signin' className='link'>
 									Sign in
 								</Link>
 							</p>

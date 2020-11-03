@@ -1,32 +1,40 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import './App.css';
 import UserProfile from '../components/userprofile/UserProfile';
 import Signin from '../components/signin/Signin';
 import Signup from '../components/signup/Signup';
+import Feed from '../components/feed/Feed';
+import { useDispatch } from 'react-redux';
+import { clearState } from '../slices/clearstateslice';
 
 function App() {
+	const dispatch = useDispatch();
+
+	function resetState() {
+		dispatch(clearState());
+	}
 	return (
-		<Router>
-			<div className='App'>
-				{/* <Feed/>
-			<UserPost/> */}
-				<Switch>
-					<Route path='/profile'>
-						<UserProfile />
-					</Route>
-					<Route path='/signin'>
-						<Signin />
-					</Route>
-					<Route path='/signup'>
-						<Signup />
-					</Route>
-					<Route path='/'>
-						<Signin />
-					</Route>
-				</Switch>
-			</div>
-		</Router>
+		<div className='App'>
+			{/* <UserPost/> */}
+			<Switch>
+				<Route path='/profile'>
+					<UserProfile />
+				</Route>
+				<Route path='/signin'>
+					<Signin resetState={resetState} />
+				</Route>
+				<Route path='/signup'>
+					<Signup resetState={resetState} />
+				</Route>
+				<Route path='/feed'>
+					<Feed />
+				</Route>
+				<Route path='/'>
+					<Feed />
+				</Route>
+			</Switch>
+		</div>
 	);
 }
 

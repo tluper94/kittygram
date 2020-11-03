@@ -21,9 +21,9 @@ const links = [
 
 function UserProfile() {
 	return (
-		<div className='main'>
+		<main className='main'>
 			<NavBar />
-			<div className='profile-container'>
+			<div className='page-container'>
 				<header className='head'>
 					<div className='profile-img-container'>
 						<div className='profile-img-frame'>
@@ -55,7 +55,7 @@ function UserProfile() {
 					})}
 				</div>
 			</div>
-		</div>
+		</main>
 	);
 }
 export default UserProfile;

@@ -1,14 +1,12 @@
 import { configureStore, getDefaultMiddleware, combineReducers } from '@reduxjs/toolkit';
-import { loginReducer } from './components/signin/loginslice';
-import { signupReducer } from './components/signup/signupslice';
+import { loginSignupReducer } from './slices/loginsignupslice';
 
 const appReducer = combineReducers({
-	login: loginReducer,
-	signup: signupReducer
+	loginSignup: loginSignupReducer
 });
 
 const rootReducer = (state, action) => {
-	if (action.type === 'USER_LOGOUT') {
+	if (action.type === 'CLEAR_STATE') {
 		state = undefined;
 	}
 

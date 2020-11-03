@@ -8,13 +8,15 @@ import user from './user.svg';
 import heart from './heart.svg';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { logout } from './navslice';
+import { clearState } from '../../slices/clearstateslice';
 
 function NavBar() {
 	const dispatch = useDispatch();
 
+	console.log();
+
 	const onLogout = () => {
-		dispatch(logout());
+		dispatch(clearState());
 	};
 
 	return (
@@ -22,7 +24,7 @@ function NavBar() {
 			<div className='nav'>
 				<div className='navcontent'>
 					<div className='logo'>
-						<Link to='/signin'>
+						<Link to='/feed'>
 							<img className='logoimg' alt='nav' src={logo}></img>
 						</Link>
 					</div>
