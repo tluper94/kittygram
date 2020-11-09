@@ -12,41 +12,57 @@ import {
 } from '../../slices/loginsignupslice';
 
 function Signin({ resetState }) {
+	//Assigns the redux useDispatch hook to the variable dispatch
 	const dispatch = useDispatch();
+
+	//Assigns the react-router useHistory hook to the variable history
 	let history = useHistory();
 
+	//Assigns the useSelector hook to the state variable
 	const state = useSelector((state) => state);
 
+	// Gets state from redux and assigns it to a variable
 	const email = state.loginSignup.email;
 	const password = state.loginSignup.password;
 	const emailClass = state.loginSignup.emailClass;
 	const passwordClass = state.loginSignup.passwordClass;
 	const errorClass = state.loginSignup.errorClass;
 
-	console.log(emailClass, passwordClass, errorClass);
-
-	const validateForm = () => {
-		let validEmail;
-		let validPassword;
-
+	//Checks if user's email is valid
+	const validateEmail = () => {
+		// If user's email is greater than an empty string function returns true.
 		if (email > '') {
+			/*Dispatches 'input-field' to the setEmailClass reducer and 
+			set the emailClass state to input-field to remove error highlight from email field*/
 			dispatch(setEmailClass('input-field'));
-			validEmail = true;
+			return true;
 		} else {
+			/* If user email is invalid, then 'input-field invalid-field'  gets dispatched to 
+			the setEmailClass reducer to set the emailClass state to 'input-field invalid-field'
+			to highlight email field red*/
 			dispatch(setEmailClass('input-field invalid-field'));
-			dispatch(setErrorClass('error'));
+			return false;
 		}
+	};
 
+	const validatePassword = () => {
 		if (password > '') {
 			dispatch(setPasswordClass('input-field'));
-			validPassword = true;
+			return true;
 		} else {
 			dispatch(setPasswordClass('input-field invalid-field'));
-			dispatch(setErrorClass('error'));
+			return false;
 		}
+	};
+
+	const validateForm = () => {
+		let validEmail = validateEmail();
+		let validPassword = validatePassword();
 
 		if (validEmail && validPassword) {
 			history.push('./profile');
+		} else {
+			dispatch(setErrorClass('error'));
 		}
 	};
 
@@ -74,7 +90,11 @@ function Signin({ resetState }) {
 											name='username'
 											type='text'
 											placeholder='Username or email'
-											onChange={(event) => dispatch(emailChange(event.target.value))}
+											onChange={(event) => {
+												dispatch(emailChange(event.target.value));
+												validateEmail();
+											}}
+											onBlur={validateEmail}
 										/>
 									</label>
 								</div>
@@ -92,9 +112,11 @@ function Signin({ resetState }) {
 											name='username'
 											type='password'
 											placeholder='Password'
-											onChange={(event) =>
-												dispatch(passwordChange(event.target.value))
-											}
+											onChange={(event) => {
+												dispatch(passwordChange(event.target.value));
+												validatePassword();
+											}}
+											onBlur={validatePassword}
 										/>
 									</label>
 								</div>

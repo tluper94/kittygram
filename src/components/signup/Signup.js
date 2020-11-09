@@ -32,50 +32,60 @@ function Signup({ resetState }) {
 	const usernameClass = state.loginSignup.usernameClass;
 	const passwordClass = state.loginSignup.passwordClass;
 
-	console.log(emailClass, 'error:', errorClass);
-
-	function onSubmit() {
-		let validEmail;
-		let validPassword;
-		let validName;
-		let ValidUserName;
-
-		if (email > '') {
+	function validateEmail() {
+		if (email > '' && email.includes('@') && email.includes('.')) {
 			dispatch(setEmailClass('input-field'));
-			validEmail = true;
+			return true;
 		} else {
 			dispatch(setEmailClass('input-field invalid-field'));
-			dispatch(setErrorClass('error'));
+			return false;
 		}
+	}
 
-		if (password > '') {
+	const validatePassword = () => {
+		const conditions = ['!', '@', '#', '$', '%', '^', '&', '*'];
+		let test = conditions.some((el) => password.includes(el));
+		if (password.length >= 8 && test) {
 			dispatch(setPasswordClass('input-field'));
-			validPassword = true;
+			return true;
 		} else {
 			dispatch(setPasswordClass('input-field invalid-field'));
-			dispatch(setErrorClass('error'));
+			return false;
 		}
+	};
 
+	const validateName = () => {
 		if (name > '') {
 			dispatch(setNameClass('input-field'));
-			validName = true;
+			return true;
 		} else {
 			dispatch(setNameClass('input-field invalid-field'));
-			dispatch(setErrorClass('error'));
+			return false;
 		}
+	};
 
+	const validateUsername = () => {
 		if (username > '') {
 			dispatch(setUsernameClass('input-field'));
-			ValidUserName = true;
+			return true;
 		} else {
 			dispatch(setUsernameClass('input-field invalid-field'));
-			dispatch(setErrorClass('error'));
+			return false;
 		}
+	};
+
+	const onSubmit = () => {
+		let validEmail = validateEmail();
+		let validPassword = validatePassword();
+		let validName = validateName();
+		let ValidUserName = validateUsername();
 
 		if (validEmail && validPassword && validName && ValidUserName) {
 			history.push('/profile');
+		} else {
+			dispatch(setErrorClass('error'));
 		}
-	}
+	};
 	return (
 		<div className='signin'>
 			<div className='container'>
@@ -101,6 +111,7 @@ function Signup({ resetState }) {
 											type='text'
 											placeholder='Email'
 											onChange={(event) => dispatch(emailChange(event.target.value))}
+											onBlur={validateEmail}
 										/>
 									</label>
 								</div>
@@ -118,6 +129,7 @@ function Signup({ resetState }) {
 											type='text'
 											placeholder='Full name'
 											onChange={(event) => dispatch(nameChange(event.target.value))}
+											onBlur={validateName}
 										/>
 									</label>
 								</div>
@@ -137,6 +149,7 @@ function Signup({ resetState }) {
 											onChange={(event) =>
 												dispatch(usernameChange(event.target.value))
 											}
+											onBlur={validateUsername}
 										/>
 									</label>
 								</div>
@@ -156,6 +169,7 @@ function Signup({ resetState }) {
 											onChange={(event) =>
 												dispatch(passwordChange(event.target.value))
 											}
+											onBlur={validatePassword}
 										/>
 									</label>
 								</div>

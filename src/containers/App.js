@@ -5,6 +5,7 @@ import UserProfile from '../components/userprofile/UserProfile';
 import Signin from '../components/signin/Signin';
 import Signup from '../components/signup/Signup';
 import Feed from '../components/feed/Feed';
+import Post from '../components/post/Post';
 import { useDispatch } from 'react-redux';
 import { clearState } from '../slices/clearstateslice';
 
@@ -29,6 +30,9 @@ function App() {
 				</Route>
 				<Route path='/feed'>
 					<Feed />
+				</Route>
+				<Route path='/p/:id'>
+					<Post />
 				</Route>
 				<Route path='/'>
 					<Feed />

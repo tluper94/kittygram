@@ -5,7 +5,6 @@ import { posts } from './database';
 import FeedPost from './FeedPost';
 
 function Feed() {
-	console.log(posts);
 	return (
 		<main className='main'>
 			<Navbar />

@@ -16,19 +16,11 @@
   align-content: center;
   justify-content: center;
   width: 100%;
+  padding-top: 55px;
 }
 
-.page-container{
-  display: flex ;
-  flex-wrap: wrap;
-  align-content: flex-start;
-  margin: 55px auto;
-  height: auto;
-  width: 100%;
-  padding: 40px 5px;
-}
-@media only screen and (min-width: 1300px){
+/* @media only screen and (min-width: 1300px){
   .page-container{
       padding: 40px 250px;
   }
-}
+} */

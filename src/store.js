@@ -1,8 +1,10 @@
 import { configureStore, getDefaultMiddleware, combineReducers } from '@reduxjs/toolkit';
 import { loginSignupReducer } from './slices/loginsignupslice';
+import { modalReducer } from './components/userprofile/modalslice';
 
 const appReducer = combineReducers({
-	loginSignup: loginSignupReducer
+	loginSignup: loginSignupReducer,
+	modal: modalReducer
 });
 
 const rootReducer = (state, action) => {
