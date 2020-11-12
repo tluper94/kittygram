@@ -3,24 +3,7 @@ import './UserProfile.css';
 import UserProfilePosts from './UserProfilePosts';
 import kitty from './kitty.jpg';
 import NavBar from '../navbar/NavBar';
-
-const users = [
-	{
-		user: 'tluper94',
-		post: [
-			{ id: 1, post: 'https://kittygram.s3.amazonaws.com/tluper94/kitty1.png', name: 'kitty1.png' },
-			{ id: 2, post: 'https://kittygram.s3.amazonaws.com/tluper94/kitty2.jpg', name: 'kitty2.jpg' },
-			{ id: 3, post: 'https://kittygram.s3.amazonaws.com/tluper94/kitten3.jpg', name: 'kitten3.jpg' },
-			{ id: 4, post: 'https://kittygram.s3.amazonaws.com/tluper94/kitty4.jpg', name: 'kitty4.jpg' },
-			{ id: 5, post: 'https://kittygram.s3.amazonaws.com/tluper94/kitty5.jpg', name: 'kitty5.jpg' },
-			{ id: 6, post: 'https://kittygram.s3.amazonaws.com/tluper94/kitty6.jpg', name: 'kitty6.jpg' },
-			{ id: 7, post: 'https://kittygram.s3.amazonaws.com/tluper94/kitty7.jpg', name: 'kitty7.jpg' },
-			{ id: 8, post: 'https://kittygram.s3.amazonaws.com/tluper94/kitty8.jpg', name: 'kitty8.jpg' },
-			{ id: 9, post: 'https://kittygram.s3.amazonaws.com/tluper94/kitty9.jpg', name: 'kitty9.jpg' },
-			{ id: 10, post: 'https://kittygram.s3.amazonaws.com/tluper94/kitty10.jpg', name: 'kitty10.jpg' }
-		]
-	}
-];
+import { users } from './database';
 
 const currentUser = users[0];
 
@@ -57,30 +40,30 @@ function UserProfile() {
 							<p className='marginleft'>10 following</p>
 						</div>
 						<div>
-							<p id='pt'>Trevor Luper</p>
-							<p id='pt'>Headline</p>
+							<p className='profile-headline'>Trevor Luper</p>
+							<p className='profile-headline'>Headline</p>
 						</div>
 					</section>
 				</header>
-				<div className='fmp'>
-					<div className='posts-container'>
-						{group(currentUser.post, 3).map((children, i) => {
-							return (
-								<div key={i} className='post-section'>
-									{children.map((link, i) => {
-										return (
-											<UserProfilePosts
-												key={i}
-												filename={link.name}
-												user={currentUser.user}
-												id={link.id}
-											></UserProfilePosts>
-										);
-									})}
-								</div>
-							);
-						})}
-					</div>
+				<div className='userprofile-posts-container'>
+					{group(currentUser.post, 3).map((children, i) => {
+						return (
+							<div key={i} className='userprofile-post-section'>
+								{children.map((link, i) => {
+									return (
+										<UserProfilePosts
+											key={i}
+											filename={link.name}
+											user={currentUser.user}
+											id={link.id}
+											likes={link.likes}
+											comments={link.comments}
+										></UserProfilePosts>
+									);
+								})}
+							</div>
+						);
+					})}
 				</div>
 			</div>
 		</main>

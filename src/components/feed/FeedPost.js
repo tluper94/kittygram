@@ -14,7 +14,7 @@ function FeedPost({ src, username, caption }) {
 				</div>
 			</div>
 			<div className='post-img'>
-				<img className='img' alt='post' src={src} />
+				<img className='img' alt='post' sizes='(max-width: 735px) 100vw, 50vw' srcSet={`${src} 640w`} />
 			</div>
 			<div className='post-info'>
 				<p className='info'>{caption}</p>

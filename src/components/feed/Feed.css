@@ -72,3 +72,10 @@
 .info{
     margin: 25px;
 }
+
+@media only screen and (max-width: 735px){
+    .feed-page-container{
+        padding: 0 0;
+        margin: 15px auto;
+    }
+}

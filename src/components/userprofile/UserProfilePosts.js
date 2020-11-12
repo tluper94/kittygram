@@ -3,10 +3,18 @@ import './UserProfile.css';
 import { Link } from 'react-router-dom';
 import { Heart, ChatCircle } from 'phosphor-react';
 
-function UserProfilePosts({ id, filename, user }) {
+function UserProfilePosts({ id, filename, user, likes, comments }) {
 	const [displayOverlay, setDisplayOverlay] = useState('display-none');
 
 	const cloudFrontUrl = 'https://d2wddn0t8pomzy.cloudfront.net';
+
+	const getNumOfComments = () => {
+		let numOfComments;
+		if (comments) {
+			numOfComments = comments.length;
+			return numOfComments;
+		}
+	};
 
 	const imageRequest = JSON.stringify({
 		bucket: 'kittygram',
@@ -30,10 +38,10 @@ function UserProfilePosts({ id, filename, user }) {
 	const url = `${cloudFrontUrl}/${btoa(imageRequest)}`;
 	return (
 		<Link to={`/p/${id}`}>
-			<div className='post-frame' onMouseOver={onPostHover} onMouseOut={onMouseLeave}>
+			<div className='userprofile-post-frame' onMouseOver={onPostHover} onMouseOut={onMouseLeave}>
 				<img
 					id={id}
-					className='post'
+					className='userprofile-post-img'
 					alt='Post'
 					sizes='(min-width: 700px) 68vw, 71vw'
 					src={url}
@@ -44,10 +52,11 @@ function UserProfilePosts({ id, filename, user }) {
 						<div className='overlay-section'>
 							<div className='overlay-icon'>
 								<Heart size={25} weight='fill' />
-								<p>10</p>
+								<p>{likes}</p>
 							</div>
 							<div className='overlay-icon'>
-								<ChatCircle size={25} weight='fill' />5
+								<ChatCircle size={25} weight='fill' />
+								{getNumOfComments()}
 							</div>
 						</div>
 					</div>

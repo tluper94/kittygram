@@ -33,7 +33,7 @@ function NavBar() {
 						<a href='/'>
 							<img className='navicon' alt='nav' src={home}></img>
 						</a>
-						<a href='/'>
+						<a href='/tluper94'>
 							<img className='navicon margin-left' alt='nav' src={download}></img>
 						</a>
 						<a href='/'>

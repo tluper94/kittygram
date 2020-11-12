@@ -11,6 +11,7 @@ import { clearState } from '../slices/clearstateslice';
 
 function App() {
 	const dispatch = useDispatch();
+	const currentUser = 'tluper94';
 
 	function resetState() {
 		dispatch(clearState());
@@ -19,11 +20,11 @@ function App() {
 		<div className='App'>
 			{/* <UserPost/> */}
 			<Switch>
-				<Route path='/profile'>
+				<Route path={`/${currentUser}`}>
 					<UserProfile />
 				</Route>
 				<Route path='/signin'>
-					<Signin resetState={resetState} />
+					<Signin resetState={resetState} currentUser={currentUser} />
 				</Route>
 				<Route path='/signup'>
 					<Signup resetState={resetState} />
@@ -31,7 +32,7 @@ function App() {
 				<Route path='/feed'>
 					<Feed />
 				</Route>
-				<Route path='/p/:id'>
+				<Route path={`/p/:id`}>
 					<Post />
 				</Route>
 				<Route path='/'>

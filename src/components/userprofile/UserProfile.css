@@ -85,13 +85,14 @@
     font-size: 18px;
     margin-bottom: 25px;
 }
-#pt{
+
+.profile-headline{
     font-size: 18px;
     margin-bottom:  4px;
     margin-top: 0;
 }
 
-.posts-container{
+.userprofile-posts-container{
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -99,7 +100,7 @@
     border-top: solid 1px gray;
     padding-top: 5px;
 }
-.post-section{
+.userprofile-post-section{
     display: flex;
     flex-direction: row;
     width: auto;
@@ -110,12 +111,12 @@
 }
 
 @media only screen and (max-width: 735px){
-    .post-section{
+    .userprofile-post-section{
         margin-bottom: 1px;
     }
 }
 
-.post-frame{
+.userprofile-post-frame{
     flex: 1 0 0%;
     position: relative;
     max-height: auto;
@@ -124,11 +125,11 @@
 
 
 @media only screen and (max-width: 735px){
-    .post-frame{
+    .userprofile-post-frame{
         margin-right: 3px;
     }
 }
-.post{
+.userprofile-post-img{
     object-fit: cover;
     max-width: 293px;
 }

@@ -1,0 +1,131 @@
+.postmain-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    max-width: 935px;
+    height: 100%;
+    margin: 0px auto 0;
+    padding: 30px;
+  }
+
+  .post{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 600px;
+    box-sizing: border-box;
+    background-color: #fff;
+    border: 1px solid rgba(var(--b6a,219,219,219),1);
+}
+
+.post-img-container{
+  display: flex;
+  justify-content: center;
+}
+
+.post-img{
+  object-fit: cover;
+
+}
+
+.comment-box{
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+  height: 100%;
+}
+
+.user{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 15px;
+  height: 18%;
+  margin: 0;
+  border-bottom: 1px solid rgba(var(--b6a,219,219,219),1);
+}
+
+.userprofilepic{
+  border-style: solid;
+  border-width: 2px transparent;
+  border-radius: 100px;
+  background-image: linear-gradient(white, white), radial-gradient(circle at top left, #f00,#3020ff);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+}
+
+.border-gradient{
+  border-image-source: linear-gradient(to left, #743ad5, #d53a9d);
+}
+
+.post-username{
+  margin: 0;
+  font-size: 1em;
+}
+
+.comments{
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+  height: 600px;
+  scrollbar-width: 0;
+  -ms-overflow-style: none;
+}
+
+.comments::-webkit-scrollbar{
+  width: 0;
+}
+
+.btns{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 25%;
+  border-top: 1px solid rgba(var(--b6a,219,219,219),1);
+}
+
+.comment-input-container{
+  height: 10%;
+  width: 100%;
+  border-top: 1px solid rgba(var(--b6a,219,219,219),1);
+}
+
+.comment-input{
+  border: none;
+  width: 85%;
+  height: 80%;
+  padding-left: 10px;
+}
+
+.comment-input:focus{
+  outline: none;
+}
+.comment-btn{
+  color: rgb(0, 153, 255);
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 735px){
+
+  .postmain-container{
+    padding: 0;
+  }
+  .comment-box{
+    width: 100%;
+    height: 40vh;
+  }
+
+  .post{
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .user{
+    padding: 5px;
+    height: 60px;
+  }
+
+}

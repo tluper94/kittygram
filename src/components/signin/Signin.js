@@ -11,7 +11,7 @@ import {
 	setErrorClass
 } from '../../slices/loginsignupslice';
 
-function Signin({ resetState }) {
+function Signin({ resetState, currentUser }) {
 	//Assigns the redux useDispatch hook to the variable dispatch
 	const dispatch = useDispatch();
 
@@ -60,7 +60,7 @@ function Signin({ resetState }) {
 		let validPassword = validatePassword();
 
 		if (validEmail && validPassword) {
-			history.push('./profile');
+			history.push(`./${currentUser}`);
 		} else {
 			dispatch(setErrorClass('error'));
 		}

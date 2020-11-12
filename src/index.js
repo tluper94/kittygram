@@ -6,6 +6,7 @@ import App from './containers/App';
 import * as serviceWorker from './serviceWorker';
 import { store } from './store';
 import { BrowserRouter as Router } from 'react-router-dom';
+import 'tachyons';
 
 ReactDOM.render(
 	<Router>
