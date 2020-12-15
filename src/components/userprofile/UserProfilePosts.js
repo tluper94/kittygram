@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './UserProfile.css';
 import { Link } from 'react-router-dom';
 import { Heart, ChatCircle } from 'phosphor-react';
 
 function UserProfilePosts({ id, filename, user, likes, comments }) {
-	const [displayOverlay, setDisplayOverlay] = useState('display-none');
-
 	const cloudFrontUrl = 'https://d2wddn0t8pomzy.cloudfront.net';
 
 	const getNumOfComments = () => {
@@ -27,18 +25,10 @@ function UserProfilePosts({ id, filename, user, likes, comments }) {
 		}
 	});
 
-	const onPostHover = () => {
-		setDisplayOverlay('post-overlay');
-	};
-
-	const onMouseLeave = () => {
-		setDisplayOverlay('display-none');
-	};
-
 	const url = `${cloudFrontUrl}/${btoa(imageRequest)}`;
 	return (
 		<Link to={`/p/${id}`}>
-			<div className='userprofile-post-frame' onMouseOver={onPostHover} onMouseOut={onMouseLeave}>
+			<div className='userprofile-post-frame'>
 				<img
 					id={id}
 					className='userprofile-post-img'
@@ -47,7 +37,7 @@ function UserProfilePosts({ id, filename, user, likes, comments }) {
 					src={url}
 					srcSet={`${url} 640w`}
 				></img>
-				<div className={displayOverlay}>
+				<div className='post-overlay'>
 					<div className='overlay-container'>
 						<div className='overlay-section'>
 							<div className='overlay-icon'>

@@ -1,0 +1,48 @@
+.videoplayer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.videoplayer__video {
+    min-width: 100%;
+    min-height: 100%;
+
+    max-width: 100%;
+    max-height: 100%;
+
+    object-fit: cover;
+}
+
+.videoplayer__controls {
+    opacity: 0;
+    color: white;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.videoplayer__controls:hover {
+    opacity: 1;
+}
+
+.videoplayer__controls_play {
+    position: absolute;
+    top: 46%;
+    left: 46%;
+    max-width: 50px;
+    cursor: pointer;
+}
+
+.videoplayer__controls_play:hover {
+    transform: scale(1.1);
+}
+
+.videoplayer__controls_progress {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    margin-bottom: 25px;
+}

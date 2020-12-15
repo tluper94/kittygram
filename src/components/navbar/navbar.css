@@ -25,16 +25,21 @@
     
 }
 
-.navbuttons{
+.nav-btns-container{
     display: flex;
+    flex-direction: row;
     flex: 1 0 0%;
     margin-left: 10px;
     align-items: center;
     justify-content: flex-end;
 }
 
-.margin-left{
-    margin-left: 25px;
+.nav-btn{
+    display: flex;
+    width: 32px;
+    height: auto;
+    justify-content: center;
+    margin-left: 18px;
 }
 
 .navicon{
@@ -66,12 +71,10 @@
 }
 
 @media only screen and (max-width: 640px){
-    .navicon{
-        width: 20px;
-        height: auto;
-    }
+
+
     .margin-left{
-        margin-left: 18px;
+        margin-left: 25px;
     }
 
     .search{

@@ -14,6 +14,7 @@ import {
 	setUsernameClass,
 	setErrorClass
 } from '../../slices/loginsignupslice';
+import { setUser } from '../../slices/userslice';
 
 function Signup({ resetState }) {
 	const dispatch = useDispatch();
@@ -81,7 +82,26 @@ function Signup({ resetState }) {
 		let ValidUserName = validateUsername();
 
 		if (validEmail && validPassword && validName && ValidUserName) {
-			history.push('/profile');
+			fetch('http://localhost:3000/register', {
+				method: 'post',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					email: email,
+					name: name,
+					username: username,
+					password: password
+				})
+			})
+				.then((res) => {
+					return res.status === 200 ? res.json() : dispatch(setErrorClass('error'));
+				})
+				.then((user) => {
+					console.log('Success', user[0]);
+					dispatch(setUser(user[0]));
+					history.push(`/${user[0].username}`);
+				});
 		} else {
 			dispatch(setErrorClass('error'));
 		}

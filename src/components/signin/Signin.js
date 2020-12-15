@@ -10,8 +10,9 @@ import {
 	setPasswordClass,
 	setErrorClass
 } from '../../slices/loginsignupslice';
+import { setUser } from '../../slices/userslice';
 
-function Signin({ resetState, currentUser }) {
+function Signin({ resetState }) {
 	//Assigns the redux useDispatch hook to the variable dispatch
 	const dispatch = useDispatch();
 
@@ -30,16 +31,10 @@ function Signin({ resetState, currentUser }) {
 
 	//Checks if user's email is valid
 	const validateEmail = () => {
-		// If user's email is greater than an empty string function returns true.
 		if (email > '') {
-			/*Dispatches 'input-field' to the setEmailClass reducer and 
-			set the emailClass state to input-field to remove error highlight from email field*/
 			dispatch(setEmailClass('input-field'));
 			return true;
 		} else {
-			/* If user email is invalid, then 'input-field invalid-field'  gets dispatched to 
-			the setEmailClass reducer to set the emailClass state to 'input-field invalid-field'
-			to highlight email field red*/
 			dispatch(setEmailClass('input-field invalid-field'));
 			return false;
 		}
@@ -60,7 +55,27 @@ function Signin({ resetState, currentUser }) {
 		let validPassword = validatePassword();
 
 		if (validEmail && validPassword) {
-			history.push(`./${currentUser}`);
+			fetch('http://localhost:3000/signin', {
+				method: 'post',
+				headers: {
+					'content-type': 'application/json'
+				},
+				body: JSON.stringify({
+					login: email,
+					password: password
+				})
+			})
+				.then((response) => {
+					return response.status === 200 ? response.json() : dispatch(setErrorClass('error'));
+				})
+				.then((user) => {
+					dispatch(setUser(user[0]));
+					history.push(`/${user[0].username}`);
+					console.log('Success', user[0]);
+				})
+				.catch((err) => {
+					console.log('Failed', err);
+				});
 		} else {
 			dispatch(setErrorClass('error'));
 		}

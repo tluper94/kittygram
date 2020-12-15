@@ -6,35 +6,37 @@ import Signin from '../components/signin/Signin';
 import Signup from '../components/signup/Signup';
 import Feed from '../components/feed/Feed';
 import Post from '../components/post/Post';
-import { useDispatch } from 'react-redux';
+import Upload from '../components/upload/Upload';
+import Error from './Error';
+import { useDispatch, useSelector } from 'react-redux';
 import { clearState } from '../slices/clearstateslice';
 
 function App() {
 	const dispatch = useDispatch();
-	const currentUser = 'tluper94';
+	const state = useSelector((state) => state);
+	const currentUser = state.user.currentUser;
 
 	function resetState() {
 		dispatch(clearState());
 	}
 	return (
 		<div className='App'>
-			{/* <UserPost/> */}
 			<Switch>
-				<Route path={`/${currentUser}`}>
-					<UserProfile />
-				</Route>
 				<Route path='/signin'>
 					<Signin resetState={resetState} currentUser={currentUser} />
 				</Route>
 				<Route path='/signup'>
 					<Signup resetState={resetState} />
 				</Route>
-				<Route path='/feed'>
-					<Feed />
+				<Route path='/upload'>
+					<Upload currentUser={currentUser} />
 				</Route>
-				<Route path={`/p/:id`}>
-					<Post />
+				<Route path='/400'>
+					<Error />
 				</Route>
+				<Route path='/feed' children={<Feed />} />
+				<Route path='/p/:id' children={<Post currentUser={currentUser} />} />
+				<Route path='/:id' children={<UserProfile currentUser={currentUser} />} />
 				<Route path='/'>
 					<Feed />
 				</Route>

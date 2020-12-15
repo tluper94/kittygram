@@ -4,6 +4,7 @@
     justify-content: center;
     max-width: 935px;
     height: 100%;
+    width: 100%;
     margin: 0px auto 0;
     padding: 30px;
   }
@@ -15,23 +16,26 @@
     height: 600px;
     box-sizing: border-box;
     background-color: #fff;
-    border: 1px solid rgba(var(--b6a,219,219,219),1);
+    box-shadow: 3px 3px 3px 4px rgba(214, 214, 214, 0.815);
+    border-radius: 5px;
+    overflow: hidden;
 }
 
 .post-img-container{
   display: flex;
+  width: 100%;
+  height: 100%;
   justify-content: center;
 }
 
 .post-img{
   object-fit: cover;
-
 }
 
 .comment-box{
   display: flex;
   flex-direction: column;
-  width: 50vw;
+  width: 30vw;
   height: 100%;
 }
 
@@ -129,3 +133,8 @@
   }
 
 }
+
+.gallery__container{
+  border-radius: 0;
+}
+

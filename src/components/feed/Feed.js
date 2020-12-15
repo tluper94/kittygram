@@ -13,7 +13,7 @@ function Feed() {
 					{posts.map((post, i) => {
 						return (
 							<FeedPost
-								key={posts[i].id}
+								key={`feed-${posts[i].id}`}
 								src={posts[i].src}
 								username={posts[i].username}
 								caption={posts[i].caption}
