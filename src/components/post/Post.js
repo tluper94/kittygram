@@ -20,7 +20,7 @@ function Post({ currentUser }) {
 
 	useEffect(() => {
 		const getPost = () => {
-			fetch('http://localhost:3000/get_post', {
+			fetch('http://192.168.2.9:3000/get_post', {
 				method: 'post',
 				headers: {
 					'Content-Type': 'application/json'
@@ -34,7 +34,7 @@ function Post({ currentUser }) {
 					} else {
 						setPost(data);
 						if (data[0].comments > 0) {
-							fetch('http://localhost:3000/comments', {
+							fetch('http://192.168.2.9:3000/comments', {
 								method: 'post',
 								headers: {
 									'Content-Type': 'application/json'
@@ -84,7 +84,7 @@ function Post({ currentUser }) {
 	};
 
 	const onSubmitComment = () => {
-		fetch('http://localhost:3000/submit_comment', {
+		fetch('http://192.168.2.9:3000/submit_comment', {
 			method: 'post',
 			headers: {
 				'Content-Type': 'application/json'
