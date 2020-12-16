@@ -101,6 +101,19 @@ function Post({ currentUser }) {
 			});
 	};
 
+	const getCommentTime = (timestamp) => {
+		const currentDate = new Date();
+		const commentDate = new Date(timestamp);
+		const postStamp = Math.floor(Math.abs(currentDate - commentDate) / 60000);
+		if (postStamp < 60) {
+			return `${postStamp}m`;
+		} else if (postStamp >= 60 && postStamp < 1440) {
+			return `${Math.floor(postStamp / 60)}hr`;
+		} else {
+			return `${Math.floor(postStamp / 60 / 24)}days`;
+		}
+	};
+
 	if (post.length > 0) {
 		let displayDots;
 		post[1].length > 1 ? (displayDots = { color: 'white', size: '3vh', inside: true }) : (displayDots = {});
@@ -126,6 +139,8 @@ function Post({ currentUser }) {
 							</header>
 							<section className='comments'>
 								{comments.map((comment, i) => {
+									const timeStamp = getCommentTime(comments[i].timestamp);
+									console.log(timeStamp);
 									return (
 										<Comment
 											key={comments[i].id}
@@ -167,7 +182,8 @@ function Post({ currentUser }) {
 					height: '100%',
 					justifyContent: 'center',
 					flexDirection: 'column',
-					alignItems: 'center'
+					alignItems: 'center',
+					backgroundColor: '#fff'
 				}}
 			>
 				<img alt='kitty loading' src={KittyLoading} width='500px' height='500px' />

@@ -1,16 +1,15 @@
 import React from 'react';
 import './UserProfile.css';
-import UserProfilePosts from './UserProfilePosts';
 import kitty from './kitty.jpg';
 import NavBar from '../navbar/NavBar';
 
 // Divides users array into arrays that have max number of items
-const group = (items, n) =>
-	items.reduce((acc, x, i) => {
-		const index = Math.floor(i / n);
-		acc[index] = [...(acc[index] || []), x];
-		return acc;
-	}, []);
+// const group = (items, n) =>
+// 	items.reduce((acc, x, i) => {
+// 		const index = Math.floor(i / n);
+// 		acc[index] = [...(acc[index] || []), x];
+// 		return acc;
+// 	}, []);
 
 function UserProfile({ currentUser }) {
 	return (
