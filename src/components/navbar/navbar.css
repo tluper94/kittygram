@@ -28,7 +28,7 @@
 .nav-btns-container{
     display: flex;
     flex-direction: row;
-    flex: 1 0 0%;
+    height: 54px;
     margin-left: 10px;
     align-items: center;
     justify-content: flex-end;
@@ -37,7 +37,7 @@
 .nav-btn{
     display: flex;
     width: 32px;
-    height: auto;
+    height: 100%;
     justify-content: center;
     margin-left: 18px;
 }

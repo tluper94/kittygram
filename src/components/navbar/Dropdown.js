@@ -49,7 +49,7 @@ function Dropdown({ src, items }) {
 				style={{
 					position: 'relative',
 					right: '184px',
-					top: '50px'
+					top: '60px'
 				}}
 			>
 				<OptionsContainer
@@ -104,6 +104,7 @@ function Dropdown({ src, items }) {
 const DropDownMenu = styled.div`
 	display: flex;
 	margin-left: 18px;
+	height: 100%;
 `;
 
 const Icon = styled.img`
