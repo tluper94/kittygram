@@ -109,7 +109,6 @@ function Upload({ currentUser }) {
 
 	return (
 		<div className='main'>
-			<NavBar />
 			<UploadContainer>
 				<UploadWindow>{previewFile()} </UploadWindow>
 				<CaptionInput onChange={onCaptionChange} placeholder='Enter some text....'></CaptionInput>

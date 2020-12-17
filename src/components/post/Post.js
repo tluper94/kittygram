@@ -116,17 +116,16 @@ function Post({ currentUser }) {
 
 	if (post.length > 0) {
 		let displayDots;
-		post[1].length > 1 ? (displayDots = { color: 'white', size: '3vh', inside: true }) : (displayDots = {});
+		post[1].length > 1 ? (displayDots = { color: 'white', size: '20px', inside: true }) : (displayDots = {});
 		return (
 			<main className='main'>
-				<NavBar />
 				<div className='postmain-container'>
 					<div className='post'>
 						<div className='post-img-container'>
 							<Gallery
 								width={'100%'}
 								height={'100%'}
-								controls={{ color: 'white', size: '4vw', weight: 'fill' }}
+								controls={{ color: 'white', size: '32px', weight: 'fill' }}
 								dots={displayDots}
 							>
 								{rezizedImages()}

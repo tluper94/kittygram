@@ -65,7 +65,7 @@ function Dropdown({ src, items }) {
 									opacity: 0,
 									height: 0,
 									boxShadow: '0px 0px 0px 0px rgba(219,219,219, 1)',
-									transition: { type: spring, duration: 0.2 }
+									transition: { type: spring, duration: 0.1 }
 							  }
 					}
 					transition={{ duration: 0.1 }}

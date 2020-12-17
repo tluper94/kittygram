@@ -7,7 +7,6 @@ import FeedPost from './FeedPost';
 function Feed() {
 	return (
 		<main className='main'>
-			<Navbar />
 			<div className='feed-page-container'>
 				<div className='feed-container'>
 					{posts.map((post, i) => {

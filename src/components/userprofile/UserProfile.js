@@ -14,7 +14,6 @@ import NavBar from '../navbar/NavBar';
 function UserProfile({ currentUser }) {
 	return (
 		<main className='main'>
-			<NavBar />
 			<div className='userprofile-container'>
 				<header className='head'>
 					<div className='profile-img-container'>

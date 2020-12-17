@@ -7,6 +7,7 @@ import Signup from '../components/signup/Signup';
 import Feed from '../components/feed/Feed';
 import Post from '../components/post/Post';
 import Upload from '../components/upload/Upload';
+import NavBar from '../components/navbar/NavBar';
 import Error from './Error';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearState } from '../slices/clearstateslice';
@@ -21,6 +22,7 @@ function App() {
 	}
 	return (
 		<div className='App'>
+			<NavBar />
 			<Switch>
 				<Route path='/signin'>
 					<Signin resetState={resetState} currentUser={currentUser} />

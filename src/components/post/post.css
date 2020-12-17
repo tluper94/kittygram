@@ -90,7 +90,7 @@
 }
 
 .comment-input-container{
-  height: 10%;
+  height: 40px;
   width: 100%;
   border-top: 1px solid rgba(var(--b6a,219,219,219),1);
 }
@@ -117,9 +117,21 @@
   .postmain-container{
     padding: 0;
   }
+
+  .post-img-container{
+    display: flex;
+    width: 100%;
+    height: 70vh;
+    justify-content: center;
+  }
+
+  .comment-input-container{
+    height: 200px;
+  }
+
   .comment-box{
     width: 100%;
-    height: 40vh;
+    height: 100%;
   }
 
   .post{
@@ -129,7 +141,7 @@
 
   .user{
     padding: 5px;
-    height: 60px;
+    height: 200px;
   }
 
 }
