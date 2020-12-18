@@ -55,7 +55,7 @@ function Signin({ resetState }) {
 		let validPassword = validatePassword();
 
 		if (validEmail && validPassword) {
-			fetch('http://192.168.2.9:3000/signin', {
+			fetch('http://69.220.165.55:3000/signin', {
 				method: 'post',
 				headers: {
 					'content-type': 'application/json'

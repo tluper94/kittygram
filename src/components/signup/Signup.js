@@ -82,7 +82,7 @@ function Signup({ resetState }) {
 		let ValidUserName = validateUsername();
 
 		if (validEmail && validPassword && validName && ValidUserName) {
-			fetch('http://192.168.2.9:3000/register', {
+			fetch('http://69.220.165.55:3000/register', {
 				method: 'post',
 				headers: {
 					'Content-Type': 'application/json'

@@ -5,7 +5,7 @@ function Comment({ comment, user }) {
 
 	useEffect(() => {
 		const getUserPic = () => {
-			fetch('http://192.168.2.9:3000/user', {
+			fetch('http://69.220.165.55:3000/user', {
 				method: 'post',
 				headers: {
 					'Content-Type': 'application/json'
@@ -25,7 +25,7 @@ function Comment({ comment, user }) {
 	}, [user]);
 
 	return (
-		<div className='flex w-100 h2 mb3 pa3  '>
+		<div className='flex w-100 h-auto mb3 pa3  '>
 			<div className='flex w-100'>
 				<div className='relative w2 h2 mr3'>
 					<img className='br-100' alt='profile' src={userpic} width='32' height='32' />
