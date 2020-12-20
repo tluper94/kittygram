@@ -36,7 +36,7 @@ function Upload({ currentUser }) {
 			formdata.append('userid', currentUser.userid);
 
 			console.log('filestream:', ...formdata);
-			fetch('http://192.168.2.9:3000/upload', {
+			fetch('http://69.220.165.55:3000/upload', {
 				method: 'post',
 				headers: {},
 				body: formdata

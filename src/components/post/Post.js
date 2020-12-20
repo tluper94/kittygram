@@ -54,10 +54,12 @@ function Post({ currentUser }) {
 		getPost();
 	}, [postId, history]);
 
+	console.log(post);
+
 	const rezizedImages = () => {
 		const media = post[1];
 		return media.map((image, i) => {
-			if (media[i].name.includes('.mp4')) {
+			if (media[i].name.includes('.mp4') || media[i].name.includes('.MOV')) {
 				return (
 					<div key={media[i].name} style={{ width: '100%', height: '100%' }}>
 						<VideoPlayer file={media[i].link} title={media[i].name} />
